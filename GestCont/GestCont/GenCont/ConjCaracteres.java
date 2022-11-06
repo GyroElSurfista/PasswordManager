@@ -16,13 +16,20 @@ public class ConjCaracteres
         Integer[] sub;
         int subconj;
         int caracter;
+        int dif;
         
-        rand = new Random();
+        rand        = new Random();
         
-        subconj = rand.nextInt(conj.size());
-        sub = conj.get(subconj);
+        subconj     = rand.nextInt(conj.size());
+        sub         = conj.get(subconj);
         
-        caracter = rand.nextInt(sub[1] - sub[0]) + sub[0]; 
+        dif         = sub[1] - sub[0];
+        
+        if(dif <= 0){
+            dif = 1;
+        }
+        
+        caracter    = rand.nextInt(dif) + sub[0]; 
         
         
         
