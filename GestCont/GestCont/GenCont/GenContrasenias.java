@@ -73,7 +73,7 @@ public class GenContrasenias
         
         for(int i = 0 ; i < n ; i++){
             asig = rand.nextInt(asigs.size());
-            asigs.get(asig).incrUsos(-1);   
+            asigs.get(asig).incrUsos(-1);
         }
     
     }
@@ -100,6 +100,10 @@ public class GenContrasenias
         
         asig    = rand.nextInt(asigs.size());
         car     = asigs.get(asig).getRandChar();
+          
+        if(asigs.get(asig).getUsos() == 0){
+            asigs.remove(asig);
+        }
         
         return car;
     }
