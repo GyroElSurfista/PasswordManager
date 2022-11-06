@@ -1,4 +1,6 @@
 package GenCont;
+import java.util.ArrayList;
+import java.util.Random;
 
 
 /**
@@ -9,27 +11,96 @@ package GenCont;
  */
 public class GenContrasenias
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
-    /**
-     * Constructor for objects of class GenContrasenias
-     */
-    public GenContrasenias()
-    {
-        // initialise instance variables
-        x = 0;
+    private ArrayList<ConjCaracteres> conj;
+    
+    public GenContrasenias(ArrayList<ConjCaracteres> conj){
+        this.conj = conj;
     }
-
-    /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
+    
+    public String genCont(int tam){
+        String                  cont;
+        char                    sig;
+        ArrayList<Asignacion>   listaAsig;
+        
+        cont        = "";
+        listaAsig   = genAsig(tam);
+        
+        for(int i = 0 ; i < tam; i++){
+            sig = getRandCar(listaAsig);
+            cont = cont + sig;
+        }
+        
+        
+        return cont;
+    }
+    
+    
+    private ArrayList<Asignacion> genAsig(int tam){
+        ArrayList<Asignacion> asigs;
+        double      porcent;
+        int         cant;
+        int         total;
+        int         dif;
+        Asignacion  asig;
+        
+        asigs   = new ArrayList<>();
+        porcent = (1.0/tam);
+        cant    = (int) (tam * porcent);
+        total   = 0;
+        
+        for(int i = 0 ; i < conj.size() ; i++){
+            asig    = new Asignacion(conj.get(i),cant);
+            asigs.add(asig);
+            total   += cant; 
+        }
+        
+        dif = Math.abs(tam - total);
+        
+        if(total > tam){
+            reducirAsig(asigs, dif);
+        }else if (total < tam){
+            aumentarAsig(asigs, dif);
+        }
+        
+        return asigs;
+    }
+    
+    private void reducirAsig(ArrayList<Asignacion> asigs, int n){
+        Random rand;
+        int asig;
+        
+        rand = new Random();
+        
+        for(int i = 0 ; i < n ; i++){
+            asig = rand.nextInt(asigs.size());
+            asigs.get(asig).incrUsos(-1);   
+        }
+    
+    }
+    
+    private void aumentarAsig(ArrayList<Asignacion> asigs, int n){
+        Random rand;
+        int asig;
+        
+        rand = new Random();
+        
+        for(int i = 0 ; i < n ; i++){
+            asig = rand.nextInt(asigs.size());
+            asigs.get(asig).incrUsos(1);   
+        }
+    }
+    
+    
+    private char getRandCar(ArrayList<Asignacion> asigs){
+        char car;
+        Random rand;
+        int asig;
+        
+        rand    = new Random();
+        
+        asig    = rand.nextInt(asigs.size());
+        car     = asigs.get(asig).getRandChar();
+        
+        return car;
     }
 }

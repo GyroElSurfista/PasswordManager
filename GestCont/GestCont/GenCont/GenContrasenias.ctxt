@@ -1,10 +1,16 @@
 #BlueJ class context
 comment0.target=GenContrasenias
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ GenContrasenias\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-comment1.params=
-comment1.target=GenContrasenias()
-comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ GenContrasenias\r\n
-comment2.params=y
-comment2.target=int\ sampleMethod(int)
-comment2.text=\r\n\ An\ example\ of\ a\ method\ -\ replace\ this\ comment\ with\ your\ own\r\n\ \r\n\ @param\ \ y\ \ \ a\ sample\ parameter\ for\ a\ method\r\n\ @return\ \ \ \ \ the\ sum\ of\ x\ and\ y\ \r\n
-numComments=3
+comment1.params=conj
+comment1.target=GenContrasenias(java.util.ArrayList)
+comment2.params=tam
+comment2.target=java.lang.String\ genCont(int)
+comment3.params=tam
+comment3.target=java.util.ArrayList\ genAsig(int)
+comment4.params=asigs\ n
+comment4.target=void\ reducirAsig(java.util.ArrayList,\ int)
+comment5.params=asigs\ n
+comment5.target=void\ aumentarAsig(java.util.ArrayList,\ int)
+comment6.params=asigs
+comment6.target=char\ getRandCar(java.util.ArrayList)
+numComments=7
